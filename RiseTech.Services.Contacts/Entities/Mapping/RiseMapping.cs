@@ -21,6 +21,7 @@ namespace RiseTech.Services.Contacts.Entities.Mapping
 			CreateMap<ContactDetail, ContactDetailDto>().ReverseMap();
 			CreateMap<ContactDetail, CreateContactDetailDto>().ReverseMap();
 			CreateMap<ContactDetail, UpdateContactDetailDto>().ReverseMap();
+			CreateMap<ContactDetail, CreateContactDetailWithContactDto>().ReverseMap();
 
 		}
 	}

@@ -1,18 +1,14 @@
 ﻿using FluentValidation;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using RiseTech.Services.Contacts.Entities.Models;
+using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 
 namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDtos
 {
 	public class CreateContactWithDetailDto
 	{
-		[BsonRepresentation(BsonType.ObjectId)]
-		public string? Id { get; set; }
 		public string FirstName { get; set; } = null!;
 		public string LastName { get; set; } = null!;
 		public string? Firm { get; set; }
-		public ContactDetail ContactDetail { get; set; } = new ContactDetail();
+		public CreateContactDetailWithContactDto DetailDto { get; set; } = new CreateContactDetailWithContactDto();
 	}
 
 	public class CreateContactWithDetailDtoValidator : AbstractValidator<CreateContactWithDetailDto>
@@ -23,9 +19,9 @@ namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDtos
 			RuleFor(contact => contact.LastName).NotNull().NotEmpty().WithMessage("Lütfen soyisim bilgisi giriniz.").Length(1, 250);
 			RuleFor(contact => contact.Firm).Length(1, 250);
 
-			RuleFor(contact => contact.ContactDetail.PhoneNumber).Length(0, 11);
-			RuleFor(contact => contact.ContactDetail.EmailAddress).Length(0, 100);
-			RuleFor(contact => contact.ContactDetail.Location).Length(0, 50);
+			RuleFor(contact => contact.DetailDto.PhoneNumber).Length(0, 11);
+			RuleFor(contact => contact.DetailDto.EmailAddress).Length(0, 100);
+			RuleFor(contact => contact.DetailDto.Location).Length(0, 50);
 		}
 	}
 
