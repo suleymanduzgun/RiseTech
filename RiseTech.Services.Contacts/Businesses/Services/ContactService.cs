@@ -50,12 +50,22 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 				var contact = _mapper.Map<Contact>(createContact);
 				await _contactCollection.InsertOneAsync(contact);
 
-				var contactDetail = _mapper.Map<ContactDetail>(contact.ContactDetail);
+				var contactDetail = _mapper.Map<ContactDetail>(createContact.DetailDto);
 				if (contact.Id != null)
 					contactDetail.ContactId = contact.Id;
 
 				await _contactDetailCollection.InsertOneAsync(contactDetail);
-				return OperationResponse<ContactWithDetailDto>.Success(_mapper.Map<ContactWithDetailDto>(contact), "Kişiyi Detay Bilgileriyle Ekleme İşlemi Başarılı", 200);
+
+				var dto = new ContactWithDetailDto
+				{
+					Id = contact.Id,
+					FirstName=contact.FirstName,
+					LastName=contact.LastName,
+					Firm=contact.Firm,
+					ContactDetail=contactDetail
+				};
+
+				return OperationResponse<ContactWithDetailDto>.Success(dto, "Kişinin Detay Bilgileriyle Ekleme İşlemi Başarılı", 200);
 
 			}
 			catch (WebException we)
