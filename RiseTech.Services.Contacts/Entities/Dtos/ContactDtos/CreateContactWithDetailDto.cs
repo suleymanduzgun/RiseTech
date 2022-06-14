@@ -23,9 +23,9 @@ namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDtos
 			RuleFor(contact => contact.LastName).NotNull().NotEmpty().WithMessage("Lütfen soyisim bilgisi giriniz.").Length(1, 250);
 			RuleFor(contact => contact.Firm).Length(1, 250);
 
-			RuleFor(contact => contact.ContactDetail.PhoneNumber).Length(1, 11);
-			RuleFor(contact => contact.ContactDetail.EmailAddress).Length(1, 100);
-			RuleFor(contact => contact.ContactDetail.Location).Length(1, 50);
+			RuleFor(contact => contact.ContactDetail.PhoneNumber).Length(0, 11);
+			RuleFor(contact => contact.ContactDetail.EmailAddress).Length(0, 100);
+			RuleFor(contact => contact.ContactDetail.Location).Length(0, 50);
 		}
 	}
 

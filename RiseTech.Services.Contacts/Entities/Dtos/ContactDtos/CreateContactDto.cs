@@ -19,4 +19,5 @@ namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDtos
       RuleFor(contact => contact.Firm).Length(1, 250);
     }
   }
+
 }
