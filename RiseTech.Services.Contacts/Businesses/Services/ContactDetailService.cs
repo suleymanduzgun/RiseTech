@@ -98,7 +98,10 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 		{
 			try
 			{
+				var cd = await _contactDetailCollection.Find<ContactDetail>(x => x.Id==updateContactDetail.Id).FirstOrDefaultAsync();
 				var contactDetail = _mapper.Map<ContactDetail>(updateContactDetail);
+				contactDetail.ContactId=cd.ContactId;
+
 				var result = await _contactDetailCollection.FindOneAndReplaceAsync(x => x.Id == contactDetail.Id, contactDetail);
 
 				if (result is null)
