@@ -19,7 +19,7 @@ builder.Services.AddSingleton<IDatabaseSettings, DatabaseSettings>(sp => { retur
 
 
 builder.Services.AddScoped(typeof(IContactService), typeof(ContactService));
-//builder.Services.AddScoped(typeof(IContactDetailService), typeof(ContactDetailService));
+builder.Services.AddScoped(typeof(IContactDetailService), typeof(ContactDetailService));
 
 
 builder.Services.AddControllers()
