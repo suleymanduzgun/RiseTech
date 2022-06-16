@@ -20,7 +20,7 @@ namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDtos
 			RuleFor(contact => contact.Firm).Length(1, 250);
 
 			RuleFor(contact => contact.DetailDto.PhoneNumber).Length(0, 11);
-			RuleFor(contact => contact.DetailDto.EmailAddress).Length(0, 100);
+			RuleFor(contact => contact.DetailDto.EmailAddress).Length(0, 100).EmailAddress();
 			RuleFor(contact => contact.DetailDto.Location).Length(0, 50);
 		}
 	}
