@@ -10,7 +10,13 @@ namespace RiseTech.Common.Dtos
 		public int StatusCode { get; private set; }
 
 		[JsonIgnore]
+		public int StatusCodeTemp { get { return StatusCode; } set { StatusCode = value; } }
+
+		[JsonIgnore]
 		public bool IsSuccessful { get; private set; }
+
+		[JsonIgnore]
+		public bool IsSuccessfulTemp { get { return IsSuccessful; } set { IsSuccessful = true; } }
 
 		public List<string>? ErrorMessages { get; set; }
 		public string? Message { get; set; }

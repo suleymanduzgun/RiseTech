@@ -56,6 +56,9 @@ namespace RiseTech.Services.Contacts.Controllers
 		[HttpPut]
 		public async Task<IActionResult> Update(UpdateContactDetailDto updateContactDetailDto)
 		{
+			if (!ModelState.IsValid)
+				return StatusCode(StatusCodes.Status400BadRequest, ModelState);
+
 			var response = await _contactDetailService.UpdateAsync(updateContactDetailDto);
 			return CreateActionResultInstance(response);
 		}
