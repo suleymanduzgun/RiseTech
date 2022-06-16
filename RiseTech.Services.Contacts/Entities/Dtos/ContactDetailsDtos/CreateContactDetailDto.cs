@@ -20,7 +20,7 @@ namespace RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos
     public CreateContactDetailDtoValidator()
 		{
 			RuleFor(contact => contact.PhoneNumber).Length(0, 11);
-			RuleFor(contact => contact.EmailAddress).Length(0, 100);
+			RuleFor(contact => contact.EmailAddress).Length(0, 100).EmailAddress();
 			RuleFor(contact => contact.Location).Length(0, 50);
 		}
   }
