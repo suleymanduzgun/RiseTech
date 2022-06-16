@@ -1,16 +1,17 @@
 ﻿using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 using FluentValidation.TestHelper;
+using Xunit;
 
 namespace Services.Contacts.Test.Entities
 {
 	public class DtosControlDetailDtosTests
 	{
-		private CreateContactDetailDtoValidator createValidator { get; }
-		private UpdateContactDetailDtoValidator updateValidator { get; }
+		private CreateContactDetailDtoValidator CreateValidator { get; }
+		private UpdateContactDetailDtoValidator UpdateValidator { get; }
 		public DtosControlDetailDtosTests()
 		{
-			createValidator = new CreateContactDetailDtoValidator();
-			updateValidator = new UpdateContactDetailDtoValidator();
+			CreateValidator = new CreateContactDetailDtoValidator();
+			UpdateValidator = new UpdateContactDetailDtoValidator();
 		}
 
 
@@ -18,7 +19,7 @@ namespace Services.Contacts.Test.Entities
 		public void CreateContactDetailDtoValidator_NotAllowEmptyPostcode()
 		{
 			var item = new CreateContactDetailDto { PhoneNumber="123456789012" };
-			var result = createValidator.TestValidate(item);
+			var result = CreateValidator.TestValidate(item);
 			result.ShouldHaveValidationErrorFor(x => x.PhoneNumber);
 		}
 
@@ -27,13 +28,13 @@ namespace Services.Contacts.Test.Entities
 		public void UpdateContactDetailDtoValidator_NotAllowEmptyPostcode()
 		{
 			var item = new CreateContactDetailDto { EmailAddress="123456789012" };
-			var result = updateValidator.TestValidate(item);
+			var result = UpdateValidator.TestValidate(item);
 			result.ShouldHaveValidationErrorFor(x => x.EmailAddress);
 		}
 
 
 		[Fact]
-		public async Task ContactDetailDto_Test()
+		public void ContactDetailDto_Test()
 		{
 			var dto = new ContactDetailDto
 			{
@@ -53,7 +54,7 @@ namespace Services.Contacts.Test.Entities
 
 
 		[Fact]
-		public async Task CreateContactDetailDto_Test()
+		public void CreateContactDetailDto_Test()
 		{
 			var dto = new CreateContactDetailDto
 			{
@@ -73,7 +74,7 @@ namespace Services.Contacts.Test.Entities
 
 
 		[Fact]
-		public async Task CreateContactDetailWithContactDto_Test()
+		public void CreateContactDetailWithContactDto_Test()
 		{
 			var dto = new CreateContactDetailWithContactDto
 			{
@@ -91,7 +92,7 @@ namespace Services.Contacts.Test.Entities
 
 
 		[Fact]
-		public async Task UpdateContactDetailDto_Test()
+		public void UpdateContactDetailDto_Test()
 		{
 			var dto = new UpdateContactDetailDto
 			{

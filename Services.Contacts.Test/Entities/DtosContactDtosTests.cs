@@ -8,14 +8,14 @@ namespace Services.Contacts.Test.Entities
 {
 	public class DtosContactDtosTests
 	{
-		private ContactValidator contactValidator { get; }
-		private CreateContactWithDetailDtoValidator createValidator { get; }
-		private UpdateContactDtoValidator updateValidator { get; }
+		private ContactValidator ContactValidator { get; }
+		private CreateContactWithDetailDtoValidator CreateValidator { get; }
+		private UpdateContactDtoValidator UpdateValidator { get; }
 		public DtosContactDtosTests()
 		{
-			contactValidator = new ContactValidator();
-			createValidator = new CreateContactWithDetailDtoValidator();
-			updateValidator = new UpdateContactDtoValidator();
+			ContactValidator = new ContactValidator();
+			CreateValidator = new CreateContactWithDetailDtoValidator();
+			UpdateValidator = new UpdateContactDtoValidator();
 		}
 
 
@@ -23,7 +23,7 @@ namespace Services.Contacts.Test.Entities
 		public void ContactValidator_NotAllowEmptyPostcode()
 		{
 			var item = new CreateContactDto { FirstName=String.Empty };
-			var result = contactValidator.TestValidate(item);
+			var result = ContactValidator.TestValidate(item);
 			result.ShouldHaveValidationErrorFor(x => x.FirstName);
 		}
 
@@ -32,7 +32,7 @@ namespace Services.Contacts.Test.Entities
 		public void CreateContactWithDetailDtoValidator_NotAllowEmptyPostcode()
 		{
 			var item = new CreateContactWithDetailDto { FirstName=String.Empty };
-			var result = createValidator.TestValidate(item);
+			var result = CreateValidator.TestValidate(item);
 			result.ShouldHaveValidationErrorFor(x => x.FirstName);
 		}
 
@@ -41,13 +41,13 @@ namespace Services.Contacts.Test.Entities
 		public void UpdateContactDtoValidator_NotAllowEmptyPostcode()
 		{
 			var item = new UpdateContactDto { FirstName=String.Empty };
-			var result = updateValidator.TestValidate(item);
+			var result = UpdateValidator.TestValidate(item);
 			result.ShouldHaveValidationErrorFor(x => x.FirstName);
 		}
 
 
 		[Fact]
-		public async Task ContactDto_Test()
+		public void ContactDto_Test()
 		{
 			var dto = new ContactDto
 			{
@@ -57,65 +57,64 @@ namespace Services.Contacts.Test.Entities
 				Firm="test",
 			};
 
-
-			var id = dto.Id;
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
+			var dto2 = dto;
+			dto2.Id = dto.Id;
+			dto2.FirstName = dto.FirstName;
+			dto2.LastName = dto.LastName;
+			dto2.Firm = dto.Firm;
 		}
 
 
 		[Fact]
-		public async Task CreateContactDto_Test()
+		public void CreateContactDto_Test()
 		{
-			var dto = new CreateContactDto
+			CreateContactDto dto = new()
 			{
 				FirstName="test",
 				LastName="test",
 				Firm="test",
 			};
 
-
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
+			var dto2 = dto;
+			dto2.FirstName = dto.FirstName;
+			dto2.LastName = dto.LastName;
+			dto2.Firm = dto.Firm;
 		}
 
 
 
 		[Fact]
-		public async Task CreateContactWithDetailDto_Test()
+		public void CreateContactWithDetailDto_Test()
 		{
-			var detailDto = new CreateContactDetailWithContactDto
+			CreateContactDetailWithContactDto detailDto = new()
 			{
 				PhoneNumber = "5555555555",
 				EmailAddress = "test@testy.com",
 				Location="İstanbul"
 			};
+			var detailDto2 = detailDto;
+			detailDto2.PhoneNumber = detailDto.PhoneNumber;
+			detailDto2.EmailAddress=detailDto.EmailAddress;
+			detailDto2.Location	=	detailDto.Location;
 
-			var dto = new CreateContactWithDetailDto
+			CreateContactWithDetailDto dto = new()
 			{
 				FirstName="test",
 				LastName="test",
 				Firm="test",
 				DetailDto=detailDto
 			};
-
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
-
-			var detailPhoneNumber = detailDto.PhoneNumber;
-			var detailEmailAddress = detailDto.EmailAddress;
-			var detailLocation = detailDto.Location;
-			var detail = detailDto;
+			var dto2 = dto;
+			dto2.FirstName = dto.FirstName;
+			dto2.LastName	=	dto.LastName;
+			dto2.Firm = dto.Firm;
 		}
 
 
 		[Fact]
-		public async Task ContactWithDetailDto_Test()
+		public void ContactWithDetailDto_Test()
 		{
-			ContactDetail detail = new ContactDetail
+			ContactDetail? detail = new()
 			{
 				Id="62a873b33453043f189dbc5f",
 				ContactId="62a8b557af31d52693e510ea",
@@ -124,7 +123,14 @@ namespace Services.Contacts.Test.Entities
 				Location = "İzmir"
 			};
 
-			var dto = new ContactWithDetailDto
+			var detail2 = detail;
+			detail2.Id = detail.Id;
+			detail2.ContactId = detail.ContactId;
+			detail2.PhoneNumber = detail.PhoneNumber;
+			detail2.EmailAddress = detail.EmailAddress;
+			detail2.Location = detail.Location;
+
+			ContactWithDetailDto dto = new()
 			{
 				Id="62a9db6c281d40dd910f22f1",
 				FirstName="test",
@@ -133,22 +139,17 @@ namespace Services.Contacts.Test.Entities
 				ContactDetail = detail
 			};
 
-
-			var id = dto.Id;
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
-			var detailId = detail.Id;
-			var detailContactId = detail.ContactId;
-			var detailPhoneNumber = detail.PhoneNumber;
-			var detailEmailAddress = detail.EmailAddress;
-			var detailLocation = detail.Location;
-			var _detail = dto.ContactDetail;
+			var dto2 = dto;
+			dto2.Id = dto.Id;
+			dto2.FirstName = dto.FirstName;
+			dto2.LastName = dto.LastName;
+			dto2.Firm = dto.Firm;
+			dto2.ContactDetail = dto.ContactDetail;
 		}
 
 
 		[Fact]
-		public async Task UpdateContactDto_Test()
+		public void UpdateContactDto_Test()
 		{
 			var dto = new UpdateContactDto
 			{
@@ -158,11 +159,11 @@ namespace Services.Contacts.Test.Entities
 				Firm="test",
 			};
 
-
-			var id = dto.Id;
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
+			var dto2 = dto;
+			dto2.Id = dto.Id;
+			dto2.FirstName = dto.FirstName;
+			dto2.LastName = dto.LastName;
+			dto2.Firm = dto.Firm;
 		}
 
 
