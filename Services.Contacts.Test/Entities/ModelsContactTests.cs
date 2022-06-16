@@ -1,11 +1,12 @@
 ﻿using RiseTech.Services.Contacts.Entities.Models;
+using Xunit;
 
 namespace Services.Contacts.Test.Entities
 {
 	public class ModelsContactTests
 	{
 		[Fact]
-		public async Task Contact_Test()
+		public void Contact_Test()
 		{
 			ContactDetail? detail = new ContactDetail
 			{
