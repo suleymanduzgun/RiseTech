@@ -23,10 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Businesses\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RiseTech.Common\RiseTech.Common.csproj" />
     <ProjectReference Include="..\RiseTech.Services.Contacts\RiseTech.Services.Contacts.csproj" />
   </ItemGroup>
