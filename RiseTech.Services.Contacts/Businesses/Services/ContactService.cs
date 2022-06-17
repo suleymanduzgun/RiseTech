@@ -62,7 +62,7 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 					FirstName=contact.FirstName,
 					LastName=contact.LastName,
 					Firm=contact.Firm,
-					ContactDetail=contactDetail
+					ContactDetail = new List<ContactDetail> { contactDetail }
 				};
 
 				return OperationResponse<ContactWithDetailDto>.Success(dto, "Kişinin Detay Bilgileriyle Ekleme İşlemi Başarılı", 200);
@@ -81,6 +81,10 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 		{
 			try
 			{
+				// I. Adım  => Detay Bilgilerini Sil.
+				var detailResult = _contactDetailCollection.DeleteManyAsync(x => x.ContactId==id);
+
+				// II. Adım => Rehberden kişiyi Sil.
 				var result = await _contactCollection.DeleteOneAsync(x => x.Id==id);
 				return result.DeletedCount > 0
 				? OperationResponse<EmptyResponse>.Success(204)
@@ -119,7 +123,7 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 
 				if (contacts.Any())
 					foreach (var contact in contacts)
-						contact.ContactDetail = await _contactDetailCollection.Find(x => x.ContactId==contact.Id).FirstOrDefaultAsync();
+						contact.ContactDetail = await _contactDetailCollection.Find(x => x.ContactId==contact.Id).ToListAsync();
 
 				return OperationResponse<List<ContactWithDetailDto>>.Success(_mapper.Map<List<ContactWithDetailDto>>(contacts), "Kişi Listesi Başarıyla Getirildi", 200);
 			}
@@ -159,7 +163,7 @@ namespace RiseTech.Services.Contacts.Businesses.Services
 				if (contact is null)
 					return OperationResponse<ContactWithDetailDto>.Fail("Kayıt Bulunamadı!", 404);
 
-				contact.ContactDetail = await _contactDetailCollection.Find(x => x.ContactId==contact.Id).FirstOrDefaultAsync();
+				contact.ContactDetail = await _contactDetailCollection.Find(x => x.ContactId==contact.Id).ToListAsync();
 				return OperationResponse<ContactWithDetailDto>.Success(_mapper.Map<ContactWithDetailDto>(contact), $"{id} Idli Kişi Kaydı Getirme İşlemi Başarılı", 200);
 			}
 			catch (WebException we)
