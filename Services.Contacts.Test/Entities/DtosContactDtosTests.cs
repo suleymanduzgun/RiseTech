@@ -95,7 +95,7 @@ namespace Services.Contacts.Test.Entities
 			var detailDto2 = detailDto;
 			detailDto2.PhoneNumber = detailDto.PhoneNumber;
 			detailDto2.EmailAddress=detailDto.EmailAddress;
-			detailDto2.Location	=	detailDto.Location;
+			detailDto2.Location = detailDto.Location;
 
 			CreateContactWithDetailDto dto = new()
 			{
@@ -106,7 +106,7 @@ namespace Services.Contacts.Test.Entities
 			};
 			var dto2 = dto;
 			dto2.FirstName = dto.FirstName;
-			dto2.LastName	=	dto.LastName;
+			dto2.LastName = dto.LastName;
 			dto2.Firm = dto.Firm;
 		}
 
@@ -114,21 +114,19 @@ namespace Services.Contacts.Test.Entities
 		[Fact]
 		public void ContactWithDetailDto_Test()
 		{
-			ContactDetail? detail = new()
-			{
-				Id="62a873b33453043f189dbc5f",
-				ContactId="62a8b557af31d52693e510ea",
-				PhoneNumber ="5555555555",
-				EmailAddress = "test@test.com",
-				Location = "İzmir"
+			List<ContactDetail> detailList = new()
+			{ 
+				new ContactDetail
+				{
+					Id="62a873b33453043f189dbc5f",
+					ContactId="62a8b557af31d52693e510ea",
+					PhoneNumber ="5555555555",
+					EmailAddress = "test@test.com",
+					Location = "İzmir"
+				}
 			};
 
-			var detail2 = detail;
-			detail2.Id = detail.Id;
-			detail2.ContactId = detail.ContactId;
-			detail2.PhoneNumber = detail.PhoneNumber;
-			detail2.EmailAddress = detail.EmailAddress;
-			detail2.Location = detail.Location;
+			var detailList2 = detailList;
 
 			ContactWithDetailDto dto = new()
 			{
@@ -136,10 +134,11 @@ namespace Services.Contacts.Test.Entities
 				FirstName="test",
 				LastName="test",
 				Firm="test",
-				ContactDetail = detail
+				ContactDetail = detailList2
 			};
 
 			var dto2 = dto;
+			dto2.ContactDetail = detailList;
 			dto2.Id = dto.Id;
 			dto2.FirstName = dto.FirstName;
 			dto2.LastName = dto.LastName;
@@ -166,6 +165,27 @@ namespace Services.Contacts.Test.Entities
 			dto2.Firm = dto.Firm;
 		}
 
+
+
+		[Fact]
+		public void ContactDetail_Test()
+		{
+			var dto = new ContactDetail
+			{
+				Id="62a9db6c281d40dd910f22f1",
+				ContactId="62a9db6c481d40dd910f22f1",
+				PhoneNumber="5554449898",
+				EmailAddress="test@test.com",
+				Location="test",
+			};
+
+			var dto2 = dto;
+			dto2.Id = dto.Id;
+			dto2.ContactId = dto.ContactId;
+			dto2.PhoneNumber = dto.PhoneNumber;
+			dto2.EmailAddress = dto.EmailAddress;
+			dto2.Location = dto.Location;
+		}
 
 
 	}

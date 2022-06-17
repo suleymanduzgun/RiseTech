@@ -8,14 +8,18 @@ namespace Services.Contacts.Test.Entities
 		[Fact]
 		public void Contact_Test()
 		{
-			ContactDetail? detail = new ContactDetail
+			List<ContactDetail> detail = new()
 			{
-				Id ="62a8b715996fea8613167414",
-				ContactId ="62a8b72e996fea8613167415",
-				PhoneNumber ="5555555555",
-				EmailAddress="test@test.com",
-				Location ="Mardin"
+				new ContactDetail
+				{
+					Id ="62a8b715996fea8613167414",
+					ContactId ="62a8b72e996fea8613167415",
+					PhoneNumber ="5555555555",
+					EmailAddress="test@test.com",
+					Location ="Mardin"
+				},
 			};
+			var detail2 = detail.ToList();
 
 			var dto = new Contact
 			{
@@ -23,19 +27,16 @@ namespace Services.Contacts.Test.Entities
 				FirstName="test",
 				LastName="test",
 				Firm="test",
-				ContactDetail=detail
+				ContactDetail=detail2
 			};
 
-			var id = dto.Id;
-			var _FirstName = dto.FirstName;
-			var _LastName = dto.LastName;
-			var _Firm = dto.Firm;
-			var detailId = detail.Id;
-			var detailContactId = detail.ContactId;
-			var detailPhoneNumber = detail.PhoneNumber;
-			var detailEmailAddress = detail.EmailAddress;
-			var detailLocation = detail.Location;
-			var _detail = dto.ContactDetail;
+			var dto2 = dto;
+			dto2.ContactDetail = dto.ContactDetail;
+			dto2.Id=dto.Id;
+			dto2.FirstName=dto.FirstName;
+			dto2.LastName=dto.LastName;
+			dto2.Firm=dto.Firm;
+			Assert.Equal(dto, dto2);
 		}
 
 

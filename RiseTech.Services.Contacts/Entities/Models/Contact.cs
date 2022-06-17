@@ -11,6 +11,6 @@ namespace RiseTech.Services.Contacts.Entities.Models
 		public string FirstName { get; set; } = null!;
 		public string LastName { get; set; } = null!;
 		public string? Firm { get; set; }
-		public ContactDetail? ContactDetail { get; set; }
+		public List<ContactDetail>? ContactDetail { get; set; }
 	}
 }
