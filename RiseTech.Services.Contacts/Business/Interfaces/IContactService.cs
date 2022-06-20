@@ -2,7 +2,7 @@
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDtos;
 using RiseTech.Services.Contacts.Entities.Models;
 
-namespace RiseTech.Services.Contacts.Businesses.Interfaces
+namespace RiseTech.Services.Contacts.Business.Interfaces
 {
 	public interface IContactService
 	{

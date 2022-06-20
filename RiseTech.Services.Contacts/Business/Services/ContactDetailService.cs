@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using RiseTech.Common.Dtos;
-using RiseTech.Services.Contacts.Businesses.Interfaces;
-using RiseTech.Services.Contacts.Businesses.Settings;
+using RiseTech.Services.Contacts.Business.Interfaces;
+using RiseTech.Services.Contacts.Business.Settings;
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 using RiseTech.Services.Contacts.Entities.Models;
 using System.Net;
 
-namespace RiseTech.Services.Contacts.Businesses.Services
+namespace RiseTech.Services.Contacts.Business.Services
 {
 	public class ContactDetailService : IContactDetailService
 	{

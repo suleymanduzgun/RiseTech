@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RiseTech.Common;
-using RiseTech.Services.Contacts.Businesses.Interfaces;
+using RiseTech.Services.Contacts.Business.Interfaces;
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 
 namespace RiseTech.Services.Contacts.Controllers
