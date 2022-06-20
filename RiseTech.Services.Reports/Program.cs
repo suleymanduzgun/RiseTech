@@ -1,10 +1,10 @@
-using RiseTech.Services.Contacts.Business.Settings;
+using RiseTech.Services.Reports.Business.Settings;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
 using FluentValidation.AspNetCore;
 using System.Reflection;
-using RiseTech.Services.Contacts.Business.Interfaces;
-using RiseTech.Services.Contacts.Business.Services;
+using RiseTech.Services.Reports.Business.Interfaces;
+using RiseTech.Services.Reports.Business.Services;
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
@@ -18,8 +18,7 @@ var dbs = builder.Configuration.GetSection("DatabaseSettings").Get<DatabaseSetti
 builder.Services.AddSingleton<IDatabaseSettings, DatabaseSettings>(sp => { return dbs; });
 
 
-builder.Services.AddScoped(typeof(IContactService), typeof(ContactService));
-builder.Services.AddScoped(typeof(IContactDetailService), typeof(ContactDetailService));
+builder.Services.AddScoped(typeof(IReportService), typeof(ReportService));
 
 
 builder.Services.AddControllers()

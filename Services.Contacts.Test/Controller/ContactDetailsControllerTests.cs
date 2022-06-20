@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using RiseTech.Common.Dtos;
-using RiseTech.Services.Contacts.Businesses.Interfaces;
+using RiseTech.Services.Contacts.Business.Interfaces;
 using RiseTech.Services.Contacts.Controllers;
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 using System.Net;

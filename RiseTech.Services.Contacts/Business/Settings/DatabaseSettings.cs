@@ -1,4 +1,4 @@
-﻿namespace RiseTech.Services.Contacts.Businesses.Settings
+﻿namespace RiseTech.Services.Contacts.Business.Settings
 {
 	public class DatabaseSettings : IDatabaseSettings
 	{

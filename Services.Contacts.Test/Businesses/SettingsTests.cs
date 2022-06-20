@@ -1,4 +1,4 @@
-﻿using RiseTech.Services.Contacts.Businesses.Settings;
+﻿using RiseTech.Services.Contacts.Business.Settings;
 using Xunit;
 
 namespace Services.Contacts.Test.Businesses

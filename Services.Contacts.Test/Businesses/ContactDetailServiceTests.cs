@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
 using Moq;
-using RiseTech.Services.Contacts.Businesses.Settings;
+using RiseTech.Services.Contacts.Business.Settings;
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 using RiseTech.Services.Contacts.Entities.Models;
 using Xunit;

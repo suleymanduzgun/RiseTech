@@ -1,7 +1,7 @@
 ﻿using RiseTech.Common.Dtos;
 using RiseTech.Services.Contacts.Entities.Dtos.ContactDetailsDtos;
 
-namespace RiseTech.Services.Contacts.Businesses.Interfaces
+namespace RiseTech.Services.Contacts.Business.Interfaces
 {
 	public interface IContactDetailService
 	{
